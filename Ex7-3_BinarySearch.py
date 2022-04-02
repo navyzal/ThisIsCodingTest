@@ -12,7 +12,7 @@
 N, K = map(int, input().split())
 Arr = list(map(int, input().split()))
 
-def BinarySearch(start, end):
+def BinarySearchR(start, end):
     global N, K, Arr
     
     if start > end:
@@ -23,10 +23,23 @@ def BinarySearch(start, end):
     if K == Arr[mid]:        
         return mid
     elif K < Arr[mid]:
-        return BinarySearch(start, mid-1)
+        return BinarySearchR(start, mid-1)
     # K > Arr[mid]:
     else:
-        return BinarySearch(mid+1, end)
+        return BinarySearchR(mid+1, end)
+
+def BinarySearch(start, end):
+    global N, K, Arr
+    
+    while start <= end:
+        mid = (start + end) // 2
+        
+        if Arr[mid] == K:
+            return mid
+        elif K < Arr[mid]:
+            end = mid - 1
+        else:
+            start = mid + 1
 
         
 found = BinarySearch(0, N-1)
