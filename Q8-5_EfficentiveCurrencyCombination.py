@@ -28,8 +28,7 @@ for i in range(1, M+1):
     
         if P[i+c] != 0:
             P[i+c] = min(P[i+c], P[i]+1)
-        else:
-            P[i+c] = P[i] + 1
+        
 
 print(P)
 if P[M] == 0:
